@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurinayat Mangat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="collaborate.html">Collaborate</a>
+      <a href="binder.html">Binder</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section id="contact" class="section">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">If you want to collaborate, tell me what you’re building and what you need.</p>
+        </div>
+      
+        <form class="contact-form" action="https://formspree.io/f/mojajler" method="POST">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your name" required />
+          </label>
+      
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+      
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" placeholder="What are you working on?" required></textarea>
+          </label>
+      
+          <!-- Optional: helps reduce spam -->
+          <input type="text" name="_gotcha" style="display:none" />
+      
+          <button type="submit">Send</button>
+        </form>
+      </section>  </main>
+
+</body>
+</html> 
