@@ -20,40 +20,74 @@
 
   <main class="binder-page">
     <article class="binder-entry">
-
+  
       <div class="binder-meta">
-        <span class="binder-tag">ai</span>
+        <span class="binder-tag">gis</span>
       </div>
-
-      <h1 class="binder-title">When models fail quietly</h1>
-
+  
+      <h1 class="binder-title">How GIS actually works (at least the part I understand)</h1>
+  
       <p class="binder-intro muted">
-        A short note on failure modes that don’t throw errors, but still matter.
+        A short reflection on how spatial data, layers, and interpretation fit together.
       </p>
-
+  
       <section class="binder-section">
         <p>
-          This is where the body of the thought goes. You can write freely here,
-          without worrying about polish or conclusions.
+          GIS feels complicated at first because it looks visual, but underneath it is mostly
+          about structured data tied to location. Every point, line, or polygon is just data
+          with coordinates, and every map is really a stack of layers that share the same
+          spatial reference.
         </p>
       </section>
-
+  
       <section class="binder-section">
         <p>
-          You can add multiple sections if it helps you think. Or just one long
-          block of text. Both are valid.
+          What helped me understand GIS better was realizing that maps are not pictures.
+          They are queries. When you zoom, filter, or change a layer, you are not just
+          “looking around” — you are asking the data a different question. The map updates
+          because the attributes change, not because the geography itself is doing anything
+          dynamic.
         </p>
       </section>
-
+  
+      <section class="binder-section">
+        <p>
+          Most GIS workflows follow a similar pattern: define the spatial unit, attach
+          attributes to it, and then explore how those attributes vary across space.
+          Whether it is crime incidents, lakes, or geological features, the logic stays
+          largely the same. What changes is how carefully scale, time window, and categories
+          are chosen.
+        </p>
+      </section>
+  
+      <section class="binder-section">
+        <p>
+          One thing I have become more aware of is how authoritative maps can feel, even
+          when the data behind them is limited. A clean map can suggest patterns that are
+          not stable or meaningful, especially with short time windows or sparse data.
+          This makes GIS less about finding answers and more about learning how not to
+          over-interpret spatial coincidence.
+        </p>
+      </section>
+  
+      <section class="binder-section">
+        <p>
+          At this stage, GIS feels less like a tool for conclusions and more like a way to
+          think. It forces assumptions to be explicit and encourages caution about what
+          the data can and cannot support. I am still learning the technical details, but
+          understanding GIS as layered data rather than visual output has changed how I
+          approach spatial problems.
+        </p>
+      </section>
+  
       <footer class="binder-footer">
         <p class="muted">
-          This entry is part of my Binder of Thoughts — a place for ideas in
-          progress.
+          This entry is part of my Binder of Thoughts — a place for ideas in progress.
         </p>
       </footer>
-
+  
     </article>
   </main>
-
+  
 </body>
 </html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predicting Product Weights at Self-Checkout Using Machine Learning | Gurinayat Mangat</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav">
+        <a href="personal-site/index.html">Home</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../collaborate.html">Collaborate</a>
+        <a href="../binder.html">Binder</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+  </header>
+
+  <main class="page">
+
+    <!-- 1) Header -->
+    <section class="section">
+      <h1>Predicting Product Weights at Self-Checkout Using Machine Learning</h1>
+      <p class="muted">
+        Self-checkout machines often fail when the actual weight of produce doesn’t match the system’s expected value. This leads to frustration and errors during checkout.I built a supervised machine learning model to predict the weight of products more accurately, reducing false alerts and improving user experience.
+      </p>
+
+      <div class="meta-row">
+        <span class="pill">Status:Done</span>
+        <span class="pill">Type: ML</span>
+        <span class="pill">Year: 2024</span>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-ghost" href="https://drive.google.com/file/d/1EPPC-4R-OY2FZTbjtYAHNPL38DIaYtfo/view" target="_blank" rel="noopener">Read Paper</a>
+        <!-- Optional -->
+        <!-- <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Write-up</a> -->
+      </div>
+    </section>
+
+    <!-- 2) At a glance -->
+    <section class="section">
+      <h2>At a glance</h2>
+
+      <div class="glance">
+        <div class="glance-item">
+          <h3>Tools</h3>
+          <p class="muted">Python · Pandas · NumPy · Scikit-learn 
+        </p>
+        </div>
+
+        <div class="glance-item">
+          <h3>Timeframe</h3>
+          <p class="muted">2–3 weeks </p>
+        </div>
+
+        <div class="glance-item">
+          <h3>Role</h3>
+          <p class="muted">Solo project</p>
+        </div>
+    </section>
+
+    <!-- 3) The question -->
+
+    <!-- 4) Approach -->
+    <section class="section">
+      <h2>Approach</h2>
+      <ul class="list">
+        <li>Used linear regression as the core model.</li>
+        <li>Features included product surface area (measured by scanner) and apple category (e.g., Gala, Honeycrisp, Red Delicious).</li>
+        <li>  Applied one-hot encoding for categorical features.</li>
+            <li>  Implemented with Python, NumPy, Pandas, and Scikit-learn.</li>
+                <li> Evaluated using MSE, RMSE, and MAE metrics.</li>
+      </ul>
+    </section>
+
+    <!-- 5) Output -->
+
+    <!-- OPTIONAL MODULES (keep/delete per project) -->
+
+    <!-- Data notes -->
+    <!--
+    <section class="section">
+      <h2>Data notes</h2>
+      <p class="muted">A few honest notes about data quality, gaps, or assumptions.</p>
+      <ul class="list">
+        <li>Example: Missing values in X</li>
+        <li>Example: Bias risk in Y</li>
+      </ul>
+    </section>
+    -->
+
+    <!-- Model / evaluation -->
+    <!--
+    <section class="section">
+      <h2>Evaluation</h2>
+      <ul class="list">
+        <li>Metric: RMSE / R² / Accuracy (choose what fits)</li>
+        <li>Baseline vs improved approach</li>
+        <li>What failed and what changed</li>
+      </ul>
+    </section>
+    -->
+
+    <!-- Maps / workflow -->
+    <!--
+    <section class="section">
+      <h2>Workflow</h2>
+      <p class="muted">Short explanation of the pipeline (e.g., Sentinel-2 → NDWI → clustering → story map).</p>
+      <div class="media-box">Workflow diagram placeholder</div>
+    </section>
+    -->
+
+    <!-- 6) What I learned -->
+    <section class="section">
+      <h2>Outputs</h2>
+      <ul class="list">
+        <li>Achieved MAE and RMSE ≈ 6.5 grams → predictions close to actual weights.</li>
+        <li>High R² score showed strong fit of the regression model.</li>
+        <li>Demonstrated feasibility of integrating ML into everyday retail technology.</li>
+      </ul>
+    </section>
+
+    <!-- 7) Next steps (optional) -->
+    <section class="section">
+      <h2>Future Improvements
+    </h2>
+      <ul class="list">
+        <li>Use larger datasets for better accuracy.</li>
+        <li>Extend beyond apples to multiple produce types.</li>
+        <li>Consider hardware capabilities to measure the surface area and weight.</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>

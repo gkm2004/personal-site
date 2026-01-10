@@ -438,21 +438,23 @@ body {
 }
 
 .media-box {
-  min-height: 220px;
+  width: 100%;
+  height: 260px;              /* fixed box height */
   border-radius: 14px;
   border: 1px solid rgba(34, 34, 34, 0.15);
   background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;           /* hides overflow */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(34, 34, 34, 0.6);
 }
 
-@media (max-width: 900px) {
-  .glance {
-    grid-template-columns: 1fr;
-  }
-  .media-grid {
-    grid-template-columns: 1fr;
-  }
+
+.media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* THIS is the magic */
+  border-radius: 0;           /* box handles rounding */
 }
+
+
