@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Vision | Binder of Thoughts</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+    <header>
+        <nav>
+          <a href="..\index.html">Home/</a>
+          <a href="..\projects.html">Projects/</a>
+          <a href="..\collaborate.html">Collaborate/</a>
+          <a href="..\binder.html">Binder/</a>
+          <a href="..\contact.html">Contact</a>
+        </nav>
+      </header>
+
+  <main class="binder-page">
+    <article class="binder-entry">
+
+      <div class="binder-meta">
+        <span class="binder-tag">ai</span>
+      </div>
+
+      <h1 class="binder-title">Computer Vision</h1>
+
+      <p class="binder-intro muted">
+        A short explanation of CNNs( as much as I understand).
+      </p>
+
+      <section class="binder-section">
+        <p>
+            In computer vision, images are not pictures but numerical data. A computer sees an image as a grid of pixel values rather than objects or meaning. The challenge of computer vision is turning these numbers into recognizable patterns, a task commonly addressed using convolutional neural networks (CNNs).
+        </p>
+      </section>
+
+      <section class="binder-section">
+        <p>
+            <img 
+            src="images/image0.jpeg"
+            style="
+              width: 500px;
+              height: 300px;
+              border-radius: 12px;
+              display: block;
+              margin: 0 auto;
+              object-fit: cover;
+            "
+          >
+          <figcaption class="muted" style="text-align: center;">
+            This image will be updated to fix a typo.
+          </figcaption>
+          Convolutional filters are used to detect different features in an image. By moving across the image in small windows, these filters highlight patterns like edges or contrasts. As multiple layers of filters are applied, the network can move from detecting simple visual cues to recognizing more complex shapes and structures.          
+                  </p>
+      </section>
+      <section class="binder-section">
+        <p>When a computer is given an image of a tree, it does not recognize it as a tree in the human sense. Instead, the image is processed as a grid of pixel values, and convolutional filters respond to local patterns within that grid. Some filters may activate strongly for edges, others for textures resembling leaves or branching shapes, and others for color distributions such as areas of green. These responses are gradually combined across layers, forming higher-level representations that capture more complex visual structure. At the final stage, the model does not automatically output a binary answer; rather, it typically produces probabilities over possible classes. Interpreting the image as a “tree” is therefore the result of accumulated evidence across many features, with a binary decision being a choice made by the task design rather than an inherent property of how the model sees the image.</p>
+      </section>
+      <footer class="binder-footer">
+        <p class="muted">
+          This entry is part of my Binder of Thoughts — a place for ideas in
+          progress.
+        </p>
+      </footer>
+
+    </article>
+  </main>
+
+</body>
+</html>
