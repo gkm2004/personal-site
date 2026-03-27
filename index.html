@@ -5,11 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gurinayat Mangat</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
   <style>
     html {
       scroll-behavior: smooth;
     }
+
+    /* ===== FOLDER SIDEBAR STYLES ===== */
     
+    .folder-tabs-container {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .folder-tab {
+      width: 60px;
+      height: 80px;
+      background: linear-gradient(135deg, #f4e4c1 0%, #e8d4a8 100%);
+      border: 2px solid #8b7355;
+      border-radius: 0 12px 12px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 8px;
+      transition: all 0.3s ease;
+      box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-weight: bold;
+      font-size: 12px;
+      color: #5c4033;
+      overflow: hidden;
+    }
+
+    .folder-tab:hover {
+      box-shadow: -4px 8px 16px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #fff5e1 0%, #f4e4c1 100%);
+      transform: translateX(-10px);
+    }
+
+    .folder-tab.active {
+      background: linear-gradient(135deg, #fff5e1 0%, #f4e4c1 100%);
+      box-shadow: -6px 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Folder content panels */
+    .folder {
+      position: fixed;
+      right: 0;
+      top: 80px;
+      width: 0;
+      height: calc(100vh - 160px);
+      background: linear-gradient(135deg, #fef6e4 0%, #f4e8d8 100%);
+      border-left: 3px solid #8b7355;
+      box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
+      overflow-y: auto;
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 99;
+      padding: 0;
+    }
+
+    .folder.active {
+      width: 45vw;
+      max-width: 500px;
+      padding: 2rem;
+    }
+
+    .folder-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #d4a574;
+      padding-bottom: 1rem;
+    }
+
+    .paperclip {
+      font-size: 24px;
+      transform: rotate(-15deg);
+      animation: sway 3s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-15deg); }
+      50% { transform: rotate(-10deg); }
+    }
+
+    .folder h3 {
+      margin: 0;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.8rem;
+      color: #5c4033;
+      letter-spacing: 1px;
+    }
+
+    .folder-content {
+      font-family: 'Permanent Marker', cursive;
+      color: #3e2723;
+      line-height: 1.8;
+    }
+
+    .folder-content p {
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .folder-content img {
+      max-width: 100%;
+      height: auto;
+      margin: 1.5rem 0;
+      border: 3px solid #8b7355;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+      transform: rotate(-2deg);
+    }
+
+    .folder-content img:nth-child(even) {
+      transform: rotate(2deg);
+    }
+
+    .folder-item {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #d4a574;
+      border-radius: 4px;
+    }
+
+    .folder-item-title {
+      font-weight: bold;
+      color: #8b7355;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Paper texture background */
+    .folder::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.02) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+      pointer-events: none;
+    }
+
+    .folder-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Scrollbar styling */
+    .folder::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .folder::-webkit-scrollbar-track {
+      background: rgba(139, 115, 85, 0.1);
+    }
+
+    .folder::-webkit-scrollbar-thumb {
+      background: #d4a574;
+      border-radius: 4px;
+    }
+
+    .folder::-webkit-scrollbar-thumb:hover {
+      background: #8b7355;
+    }
+
     footer {
       background: #f5efeb;
       margin-top: 4rem;
@@ -33,9 +210,128 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .folder.active {
+        width: 60vw;
+      }
+      
+      .folder-tab {
+        width: 50px;
+        height: 70px;
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .folder-tabs-container {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- FOLDER SIDEBAR -->
+  <div class="folder-tabs-container">
+    <div class="folder-tab active" onclick="openFolder('lab-log')">Lab Log</div>
+    <div class="folder-tab" onclick="openFolder('archive')">Archive</div>
+    <div class="folder-tab" onclick="openFolder('pocket')">Pocket</div>
+  </div>
+
+  <!-- FOLDERS -->
+  <div id="lab-log" class="folder active">
+    <div class="folder-header">
+      <span class="paperclip">📎</span>
+      <h3>The Lab Log</h3>
+    </div>
+    <div class="folder-content">
+      <div class="folder-item">
+        <div class="folder-item-title">Terminal Notes — GIS Query Attempt #7</div>
+        <p><code style="background: rgba(0,0,0,0.05); padding: 2px 4px; border-radius: 2px;">gdalinfo -checksum layer.tif</code></p>
+        <p>why is the raster metadata refusing to cooperate... tried reprojecting to EPSG:4326. still nonsense. going to try gdal_translate next.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Bug: Leaflet Popup Z-Index</div>
+        <p>the popup was hiding behind the basemap. added <code style="background: rgba(0,0,0,0.05); padding: 2px 4px; border-radius: 2px;">z-index: 1000</code> to .leaflet-popup. solved. why do i always forget this?</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">ML Model Confusion Matrix Disaster</div>
+        <p>precision: 87%, but the false positives are still garbage. re-sampling training data tomorrow. also need to adjust threshold from 0.5 to 0.6.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Code Snippet: Quick Pandas Groupby</div>
+        <p><code style="background: rgba(0,0,0,0.05); padding: 2px 4px; border-radius: 2px;">df.groupby('region').agg({'value': 'sum'})</code></p>
+        <p>keep forgetting the syntax. saved here.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="archive" class="folder">
+    <div class="folder-header">
+      <span class="paperclip">📎</span>
+      <h3>The Archive</h3>
+    </div>
+    <div class="folder-content">
+      <div class="folder-item">
+        <div class="folder-item-title">Vintage Map of Regina, 1912</div>
+        <p>found this in the city archives. the street layout has changed SO much. using this as reference for the Crime Dashboard project—trying to understand how neighborhoods have shifted.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Botanical Sketches — Plant Observations</div>
+        <p>quick drawings from a walk near Wascana Marsh. want to use these as inspiration for a spatial visualization of native plants. the detail in the leaf veins is *chef's kiss*.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Old Photographs of Public Spaces</div>
+        <p>collection of black & white photos from the library showing how people used to gather in downtown Regina. thinking about how to layer these with modern satellite imagery.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Transit Map Evolution</div>
+        <p>comparing transit systems from 1980 → 2020. fascinatingly consistent shapes. saved these to study cartographic design principles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="pocket" class="folder">
+    <div class="folder-header">
+      <span class="paperclip">📎</span>
+      <h3>The Pocket</h3>
+    </div>
+    <div class="folder-content">
+      <div class="folder-item">
+        <div class="folder-item-title">Currently Coding To:</div>
+        <p><strong>Jon Hopkins — Emerald Rush</strong> — the build-up at 2:30 hits different when you're debugging. pure flow state music.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Quote That Stuck</div>
+        <p><em>"The map is not the territory."</em> — Alfred Korzybski<br>
+        (thinking about this a lot lately. all my visualizations are abstractions. what am i leaving out?)</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Desk Photo</div>
+        <p>current setup: dual monitors, cold brew, one houseplant (barely surviving), and about 12 sticky notes with variable names i definitely should've documented better.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Random Idea to Explore</div>
+        <p>what if you could see a *time-lapse* of how a city changed, season by season, from satellite imagery? could be beautiful OR overwhelming. TBD.</p>
+      </div>
+
+      <div class="folder-item">
+        <div class="folder-item-title">Coffee Shop Recommendation</div>
+        <p><strong>The Wake & Bake</strong> — great for working. quiet corner, reliable wifi, and they remember my order (oat milk cappuccino).</p>
+      </div>
+    </div>
+  </div>
 
   <header>
     <nav>
@@ -72,42 +368,33 @@
       </div>
     
       <div class="cards">
-        <!-- Card 1 -->
         <a href="projects/project1.html" class="card-link">
           <article class="card">
             <div class="card-top">
               <h3>Regina Crime Dashboard</h3>
               <span class="tag">data viz</span>
             </div>
-            <p class="muted">
-              Interactive dashboard exploring public crime data by area and type.
-            </p>
+            <p class="muted">Interactive dashboard exploring public crime data by area and type.</p>
           </article>
         </a>
     
-        <!-- Card 2 -->
         <a href="projects/project2.html" class="card-link">
           <article class="card">
             <div class="card-top">
               <h3>Apple Weight Prediction</h3>
               <span class="tag">ml</span>
             </div>
-            <p class="muted">
-              Predictive modeling experiment focused on evaluation and iteration.
-            </p>
+            <p class="muted">Predictive modeling experiment focused on evaluation and iteration.</p>
           </article>
         </a>
     
-        <!-- Card 3 -->
         <a href="#" class="card-link">
           <article class="card">
             <div class="card-top">
               <h3>The Lake Project</h3>
               <span class="tag">spatial</span>
             </div>
-            <p class="muted">
-              Remote sensing + GIS workflow to analyze lake changes over time.
-            </p>
+            <p class="muted">Remote sensing + GIS workflow to analyze lake changes over time.</p>
           </article>
         </a>
       </div>
@@ -117,53 +404,34 @@
     <section id="collaborate" class="section page-collaborate">
       <section class="section">
         <h2>Who this is for</h2>
-        <p class="muted">
-          This page is mainly for fellow students who are working on:
-        </p>
-      
+        <p class="muted">This page is mainly for fellow students who are working on:</p>
         <ul class="list">
           <li>course projects</li>
           <li>research ideas</li>
           <li>hackathon or side projects</li>
           <li>data-for-good or public-interest work</li>
         </ul>
-      
-        <p class="muted">
-          I'm also open to thoughtful, small-scope collaborations beyond student spaces
-          when expectations are clear and aligned.
-        </p>
+        <p class="muted">I'm also open to thoughtful, small-scope collaborations beyond student spaces when expectations are clear and aligned.</p>
       </section>
       
       <section class="section">
         <h2>Ways we could collaborate</h2>
-      
         <div class="stack">
           <div class="item">
             <h3>Project brainstorming &amp; scoping</h3>
-            <p class="muted">
-              Turning vague ideas into something buildable.
-            </p>
+            <p class="muted">Turning vague ideas into something buildable.</p>
           </div>
-      
           <div class="item">
             <h3>Data analysis &amp; visualization</h3>
-            <p class="muted">
-              Making sense of datasets for projects, competitions, or personal exploration.
-            </p>
+            <p class="muted">Making sense of datasets for projects, competitions, or personal exploration.</p>
           </div>
-      
           <div class="item">
             <h3>ML / AI experiments</h3>
-            <p class="muted">
-              Trying models, evaluating results, and documenting what we learn (including what doesn't work).
-            </p>
+            <p class="muted">Trying models, evaluating results, and documenting what we learn (including what doesn't work).</p>
           </div>
-      
           <div class="item">
             <h3>Research &amp; writing support</h3>
-            <p class="muted">
-              Helping structure ideas, figures, and explanations for papers, reports, or presentations.
-            </p>
+            <p class="muted">Helping structure ideas, figures, and explanations for papers, reports, or presentations.</p>
           </div>
         </div>
       </section>
@@ -171,7 +439,6 @@
       <section class="section">
         <h2>What collaboration looks like</h2>
         <p class="muted">When I collaborate, I value:</p>
-      
         <ul class="list">
           <li>shared learning</li>
           <li>clear communication</li>
@@ -189,29 +456,21 @@
     <section id="binder" class="section">
       <div class="section-head">
         <h2>Binder of Thoughts</h2>
-        <p class="muted">
-          Notes, questions, and half-finished ideas. Some technical, some not.
-        </p>
+        <p class="muted">Notes, questions, and half-finished ideas. Some technical, some not.</p>
       </div>
-    
       <div class="binder-grid">
-        <!-- Thought 1 -->
         <a href="binder/my-first-thought.html" class="binder-link">
           <article class="binder-card tag-data">
             <span class="binder-tag">gis</span>
             <h3>How GIS actually works (at least the part I understand)</h3>              
-            <p class="muted">
-              A short reflection on how spatial data, layers, and interpretation fit together.
-            </p>
+            <p class="muted">A short reflection on how spatial data, layers, and interpretation fit together.</p>
           </article>
         </a> 
         <a href="binder/computer-vision.html" class="binder-link">
           <article class="binder-card tag-ai">
             <span class="binder-tag">ml</span>
             <h3>Computer Vision 👁️👁️</h3>              
-            <p class="muted">
-              A short introduction to how computer is able to see things.
-            </p>
+            <p class="muted">A short introduction to how computer is able to see things.</p>
           </article>
         </a> 
       </div>
@@ -223,26 +482,20 @@
         <h2>Contact</h2>
         <p class="muted">If you want to collaborate, tell me what you're building and what you need.</p>
       </div>
-    
       <form class="contact-form" action="https://formspree.io/f/mojajler" method="POST">
         <label>
           <span>Name</span>
           <input type="text" name="name" placeholder="Your name" required />
         </label>
-    
         <label>
           <span>Email</span>
           <input type="email" name="email" placeholder="you@example.com" required />
         </label>
-    
         <label>
           <span>Message</span>
           <textarea name="message" rows="6" placeholder="What are you working on?" required></textarea>
         </label>
-    
-        <!-- Optional: helps reduce spam -->
         <input type="text" name="_gotcha" style="display:none" />
-    
         <button type="submit">Send</button>
       </form>
     </section>
@@ -264,6 +517,26 @@
       <a href="https://github.com/gkm2004/personal-site">GitHub</a>
     </p>
   </footer>
+
+  <script>
+    function openFolder(folderName) {
+      // Close all folders
+      document.querySelectorAll('.folder').forEach(folder => {
+        folder.classList.remove('active');
+      });
+      
+      // Remove active state from all tabs
+      document.querySelectorAll('.folder-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Open selected folder
+      document.getElementById(folderName).classList.add('active');
+      
+      // Highlight the clicked tab
+      event.target.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
