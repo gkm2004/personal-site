@@ -1,52 +1,269 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Consolidated Personal Site</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        section { padding: 20px; margin: 10px 0; border: 1px solid #ccc; }
-        nav { position: fixed; top: 0; width: 100%; background: #fff; padding: 10px; }
-        footer { margin-top: 20px; text-align: center; padding: 10px; background: #f1f1f1; }
-        /* Smooth scrolling */
-        html { scroll-behavior: smooth; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurinayat Mangat</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    footer {
+      background: #f5efeb;
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+    
+    footer p {
+      margin: 0.5rem 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    
+    footer a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-<nav>
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#collaborate">Collaborate</a>
-    <a href="#binder">Binder</a>
-    <a href="#contact">Contact</a>
-</nav>
 
-<section id="home">
-    <h1>Home</h1>
-    <p>Welcome to my personal site!</p>
-</section>
+  <header>
+    <nav>
+      <a href="#home">Home/</a>
+      <a href="#projects">Projects/</a>
+      <a href="#collaborate">Collaborate/</a>
+      <a href="#binder">Binder/</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <p>[Project content goes here]</p>
-</section>
+  <main>
+    <!-- HOME SECTION -->
+    <section id="home">
+      <h1>Gurinayat Mangat</h1>
+      <p>I'm a computer science student interested in how data and systems shape how we see the world. I'm especially drawn to questions around place, public information, and how technical tools are used in real contexts.</p>
+      
+      <div class="actions">
+        <button onclick="document.location='#projects'">View projects</button>
+        <p>I enjoy working alongside other students and early-stage collaborators, especially in spaces where learning together matters more than polish or speed. I value clear communication, shared credit, and being honest about what I don't yet know.</p>
+        <button onclick="document.location='#collaborate'">Collaborate with me</button>
+        <p>I keep a Binder of Thoughts on this site as a way to think in public : notes, reflections, and ideas in progress. It's not meant to be definitive, just a record of how my thinking evolves over time.</p>
+        <button onclick="document.location='#binder'">View Binder</button>
+        <p>Right now, I'm focused on learning, building, and working on projects that feel thoughtful and grounded. If something here resonates with you, feel free to reach out.</p>
+        <button onclick="document.location='#contact'">Contact</button>
+      </div>
+    </section>
 
-<section id="collaborate">
-    <h2>Collaborate</h2>
-    <p>[Collaboration details go here]</p>
-</section>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2>Selected Work</h2>
+        <p class="muted">A few projects I've been building and learning through.</p>
+      </div>
+    
+      <div class="cards">
+        <!-- Card 1 -->
+        <a href="projects/project1.html" class="card-link">
+          <article class="card">
+            <div class="card-top">
+              <h3>Regina Crime Dashboard</h3>
+              <span class="tag">data viz</span>
+            </div>
+            <p class="muted">
+              Interactive dashboard exploring public crime data by area and type.
+            </p>
+          </article>
+        </a>
+    
+        <!-- Card 2 -->
+        <a href="projects/project2.html" class="card-link">
+          <article class="card">
+            <div class="card-top">
+              <h3>Apple Weight Prediction</h3>
+              <span class="tag">ml</span>
+            </div>
+            <p class="muted">
+              Predictive modeling experiment focused on evaluation and iteration.
+            </p>
+          </article>
+        </a>
+    
+        <!-- Card 3 -->
+        <a href="#" class="card-link">
+          <article class="card">
+            <div class="card-top">
+              <h3>The Lake Project</h3>
+              <span class="tag">spatial</span>
+            </div>
+            <p class="muted">
+              Remote sensing + GIS workflow to analyze lake changes over time.
+            </p>
+          </article>
+        </a>
+      </div>
+    </section>
 
-<section id="binder">
-    <h2>Binder</h2>
-    <p>[Binder information goes here]</p>
-</section>
+    <!-- COLLABORATE SECTION -->
+    <section id="collaborate" class="section page-collaborate">
+      <section class="section">
+        <h2>Who this is for</h2>
+        <p class="muted">
+          This page is mainly for fellow students who are working on:
+        </p>
+      
+        <ul class="list">
+          <li>course projects</li>
+          <li>research ideas</li>
+          <li>hackathon or side projects</li>
+          <li>data-for-good or public-interest work</li>
+        </ul>
+      
+        <p class="muted">
+          I'm also open to thoughtful, small-scope collaborations beyond student spaces
+          when expectations are clear and aligned.
+        </p>
+      </section>
+      
+      <section class="section">
+        <h2>Ways we could collaborate</h2>
+      
+        <div class="stack">
+          <div class="item">
+            <h3>Project brainstorming &amp; scoping</h3>
+            <p class="muted">
+              Turning vague ideas into something buildable.
+            </p>
+          </div>
+      
+          <div class="item">
+            <h3>Data analysis &amp; visualization</h3>
+            <p class="muted">
+              Making sense of datasets for projects, competitions, or personal exploration.
+            </p>
+          </div>
+      
+          <div class="item">
+            <h3>ML / AI experiments</h3>
+            <p class="muted">
+              Trying models, evaluating results, and documenting what we learn (including what doesn't work).
+            </p>
+          </div>
+      
+          <div class="item">
+            <h3>Research &amp; writing support</h3>
+            <p class="muted">
+              Helping structure ideas, figures, and explanations for papers, reports, or presentations.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="section">
+        <h2>What collaboration looks like</h2>
+        <p class="muted">When I collaborate, I value:</p>
+      
+        <ul class="list">
+          <li>shared learning</li>
+          <li>clear communication</li>
+          <li>small, well-defined scope</li>
+          <li>documenting as we go</li>
+          <li>shared credit</li>
+        </ul>
+      </section>
+      
+      <p>If this sounds like something you'd enjoy, feel free to reach out and tell me what you're working on and what kind of collaboration you're hoping for.</p>
+      <button onclick="document.location='#contact'">Get in touch</button>
+    </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>[Contact details go here]</p>
-</section>
+    <!-- BINDER SECTION -->
+    <section id="binder" class="section">
+      <div class="section-head">
+        <h2>Binder of Thoughts</h2>
+        <p class="muted">
+          Notes, questions, and half-finished ideas. Some technical, some not.
+        </p>
+      </div>
+    
+      <div class="binder-grid">
+        <!-- Thought 1 -->
+        <a href="binder/my-first-thought.html" class="binder-link">
+          <article class="binder-card tag-data">
+            <span class="binder-tag">gis</span>
+            <h3>How GIS actually works (at least the part I understand)</h3>              
+            <p class="muted">
+              A short reflection on how spatial data, layers, and interpretation fit together.
+            </p>
+          </article>
+        </a> 
+        <a href="binder/computer-vision.html" class="binder-link">
+          <article class="binder-card tag-ai">
+            <span class="binder-tag">ml</span>
+            <h3>Computer Vision 👁️👁️</h3>              
+            <p class="muted">
+              A short introduction to how computer is able to see things.
+            </p>
+          </article>
+        </a> 
+      </div>
+    </section>
 
-<footer>
-    <p>Personal Site © 2026</p>
-    <p>Links: <a href="https://github.com/gkm2004/personal-site">GitHub Repo</a> | <a href="#">Privacy Policy</a></p>
-</footer>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">If you want to collaborate, tell me what you're building and what you need.</p>
+      </div>
+    
+      <form class="contact-form" action="https://formspree.io/f/mojajler" method="POST">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+    
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+    
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" placeholder="What are you working on?" required></textarea>
+        </label>
+    
+        <!-- Optional: helps reduce spam -->
+        <input type="text" name="_gotcha" style="display:none" />
+    
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Gurinayat Mangat</strong></p>
+    <p>Computer Science Student | Data • Systems • Place</p>
+    <p>
+      <a href="#home">Home</a> | 
+      <a href="#projects">Projects</a> | 
+      <a href="#collaborate">Collaborate</a> | 
+      <a href="#binder">Binder</a> | 
+      <a href="#contact">Contact</a>
+    </p>
+    <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+      © 2026 Gurinayat Mangat | 
+      <a href="https://github.com/gkm2004/personal-site">GitHub</a>
+    </p>
+  </footer>
+
 </body>
 </html>
