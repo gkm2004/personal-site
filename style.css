@@ -1,460 +1,383 @@
-body {
-    /*font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;*/
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5efeb;
-    color: #222;
-    line-height: 1.6;
-  }
-  
-  header {
-    background: #c8d9e6;
-    padding: 1.6rem 0;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0.4rem;
-    border-radius: 10px;
-  }
-  
-
-  nav a {
-    text-decoration: none;
-    color: #222;
-    font-size: 1.1rem;          /* bigger */
-    font-weight: 600;           /* stronger */
-    letter-spacing: 0.001em;     /* subtle polish */
-    padding: 0.5rem 0.9rem;
-    border-radius: 6px;
-    transition: background-color 0.15s ease, transform 0.1s ease;
-  }
-  
-  nav a:hover {
-    background-color: rgba(0, 0, 0, 0.12);
-    transform: translateY(-1px);
-  }
-  
-  main {
-    max-width: 900px;
-    padding: 4rem 2rem;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  h2 {
-    margin-bottom: 0.75rem;
-  }
-  
-  h3 {
-    margin-bottom: 0.35rem;
-  }
-  
-  .actions {
-    margin-top: 2rem;
-  }
-  
-  button {
-    padding: 0.6rem 1.2rem;
-    font-family: 'Courier New', Courier, monospace;
-    margin-right: 1rem;
-    border: 1px solid #222;
-    background: none;
-    background: #c8d9e6;
-    cursor: pointer;
-  }
-  
-  .section {
-    margin-top: 3rem;
-  }
-  
-  .section-head {
-    margin-bottom: 1.5rem;
-  }
-  
-  .muted {
-    color: #555;
-  }
-  
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-  
-  .card {
-    background: #e2c7e3;
-    border: 1px solid #e6e6e6;
-    border-radius: 14px;
-    padding: 1.25rem;
-  }
-  
-  .card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .card h3 {
-    margin: 0;
-    font-size: 1.1rem;
-  }
-  
-  .tag {
-    font-size: 0.8rem;
-    border: 1px solid #ddd;
-    padding: 0.25rem 0.6rem;
-    border-radius: 999px;
-    color: #333;
-    white-space: nowrap;
-  }
-  
-  .card-actions {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: #222;
-    font-weight: 600;
-  }
-  
-  .link.subtle {
-    font-weight: 500;
-    color: #555;
-  }
-  
-  /* responsive */
-  @media (max-width: 900px) {
-    .cards {
-      grid-template-columns: 1fr;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurinayat Mangat</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
     }
-  }
-  
-  .card-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .card-link:hover .card {
-    border-color: #bbb;
-  }
-  
-  .card-link:hover {
-    cursor: pointer;
-  }
-  
-  /* Binder of Thoughts */
-
-.binder-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
-  }
-  
-  .binder-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .binder-card {
-    background: #fff;
-    border: 1px solid #e6e6e6;
-    border-radius: 12px;
-    padding: 1.1rem;
-    position: relative;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-  }
-  
-  .binder-tag {
-    font-size: 0.75rem;
-    text-transform: lowercase;
-    border: 1px solid #ddd;
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    display: inline-block;
-    margin-bottom: 0.6rem;
-    color: #444;
-  }
-  
-  .binder-card h3 {
-    margin: 0 0 0.4rem 0;
-    font-size: 1rem;
-  }
-  
-  .binder-link:hover .binder-card {
-    border-color: #bbb;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-    cursor: pointer;
-  }
-  
-  /* responsive tweak */
-  @media (max-width: 600px) {
-    .binder-card {
-      padding: 1rem;
+    
+    body {
+      overflow-x: hidden; /* Prevents the folder from causing a horizontal scrollbar */
     }
-  }
 
-  /* Binder entry page */
+    footer {
+      background: #f5efeb;
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+    
+    footer p {
+      margin: 0.5rem 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    
+    footer a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
 
-.binder-page {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-  
-  .binder-entry {
-    display: block;
-  }
-  
-  .binder-meta {
-    margin-bottom: 0.75rem;
-  }
-  
-  .binder-title {
-    font-size: 2rem;
-    margin: 0 0 0.75rem 0;
-  }
-  
-  .binder-intro {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .binder-section {
-    margin-bottom: 1.5rem;
-  }
-  
-  .binder-section p {
-    margin: 0;
-  }
-  
-  .binder-footer {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-  }
+    /* --- JUNK JOURNAL DRAWER STYLES --- */
+    
+    .folder-drawer {
+      position: fixed;
+      right: -360px; /* Width of the drawer */
+      top: 10%;
+      width: 350px;
+      height: 75vh;
+      background: #e3d5b8; /* Manila Folder Beige */
+      box-shadow: -5px 5px 20px rgba(0,0,0,0.15);
+      transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      z-index: 1000;
+      display: flex;
+      border-radius: 12px 0 0 12px;
+      border: 1px solid #d4c3a3;
+    }
 
-  /* Binder tag color themes */
+    .folder-drawer.open {
+      right: 0;
+    }
 
-.tag-data {
-    background: #80b4df;
-    border-color: #cfe6ff;
-  }
-  
-  .tag-ai {
-    background: #70caa5;
-    border-color: #ffd9b3;
-  }
-  
-  .tag-learning {
-    background: #e4a2b5;
-    border-color: #cdeec7;
-  }
-  
-  .tag-ethics {
-    background: #94c885;
-    border-color: #e6c8f0;
-  }
-  
-  /* Contact form */
-.contact-form {
-    margin-top: 1.25rem;
-    display: grid;
-    gap: 1rem;
-    max-width: 650px;
-  }
-  
-  .contact-form label span {
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 0.4rem;
-    color: #333;
-  }
-  
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 0.85rem 0.9rem;
-    border: 1px solid #e6e6e6;
-    border-radius: 12px;
-    font: inherit;
-    background: #fff;
-  }
-  
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    border-color: #bbb;
-  }
-  
-  .small-note {
-    margin-top: 1rem;
-    font-size: 0.95rem;
-  }
-  
-  /* -------- Collaborate page improvements -------- */
+    /* THE TAB THAT PEEKS OUT */
+    .folder-tab {
+      position: absolute;
+      left: -45px;
+      top: 40px;
+      background: #d4c3a3;
+      width: 45px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 12px 0 0 12px;
+      box-shadow: -3px 2px 5px rgba(0,0,0,0.1);
+      border: 1px solid #c4b393;
+      border-right: none;
+    }
 
-.page {
-  max-width: 900px;
-  padding: 4rem 2rem;
-  margin: 0 auto;
-}
+    .folder-tab span {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #5d5442;
+      font-family: sans-serif;
+    }
 
-/* tighter section spacing ONLY on collaborate page */
-.page-collaborate .section {
-  margin-top: 1.8rem; /* was 3rem globally */
-}
+    /* INSIDE THE FOLDER */
+    .folder-content {
+      padding: 1.5rem;
+      overflow-y: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
-.page-collaborate .section:first-child {
-  margin-top: 0;
-}
+    .folder-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #5d5442;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
 
-/* make headings feel connected to their content */
-.page-collaborate h2 {
-  margin: 0 0 0.6rem 0;
-}
+    .folder-header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #5d5442;
+      font-family: 'Courier New', Courier, monospace;
+    }
 
-.page-collaborate p {
-  margin: 0.6rem 0 0.8rem 0;
-}
+    .close-folder {
+      background: #5d5442;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      font-size: 11px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
 
-/* nicer lists */
-.page-collaborate .list {
-  padding-left: 1.2rem;
-  margin: 0.4rem 0 0.9rem 0;
-}
+    /* JOURNAL SCRAPS */
+    .journal-scrap {
+      background: #fff;
+      padding: 1.2rem;
+      position: relative;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+      font-family: 'Georgia', serif;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #333;
+    }
 
-.page-collaborate .list li {
-  margin: 0.35rem 0;
-}
+    /* WASHI TAPE EFFECT */
+    .journal-scrap::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 80px;
+      height: 25px;
+      background: rgba(188, 204, 158, 0.6); /* Sage green tape */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
 
-/* collaboration items as neat cards */
-.page-collaborate .stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
+    .vintage-style {
+      background-color: #fdf6e3;
+      border: 1px solid #e3d5b8;
+      transform: rotate(-1.5deg);
+    }
 
-.page-collaborate .item {
-  background: #e2c7e3; /* matches your project cards */
-  border: 1px solid #222; /* same border mood as buttons */
-  border-radius: 14px;
-  padding: 1rem 1.1rem;
-}
+    .tech-style {
+      background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+      background-size: 15px 15px;
+      background-color: #f0f8ff;
+      transform: rotate(1deg);
+      font-family: 'Courier New', Courier, monospace;
+    }
 
-.page-collaborate .item h3 {
-  margin: 0 0 0.35rem 0;
-  font-size: 1.05rem;
-}
+    .scrap-date {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: #888;
+    }
 
-.page-collaborate .item p {
-  margin: 0;
-}
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
 
-/* responsive: stack cards on smaller screens */
-@media (max-width: 900px) {
-  .page-collaborate .stack {
-    grid-template-columns: 1fr;
-  }
-}
+  <header>
+    <nav>
+      <a href="#home">Home/</a>
+      <a href="#projects">Projects/</a>
+      <a href="#collaborate">Collaborate/</a>
+      <a href="#binder">Binder/</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-/* optional: add a subtle divider between sections instead of big whitespace */
-.page-collaborate .section + .section {
-  border-top: 1px solid rgba(34, 34, 34, 0.18);
-  padding-top: 1.6rem;
-}
+  <main>
+    <section id="home">
+      <h1>Gurinayat Mangat</h1>
+      <p>I'm a computer science student interested in how data and systems shape how we see the world. I'm especially drawn to questions around place, public information, and how technical tools are used in real contexts.</p>
+      
+      <div class="actions">
+        <button onclick="document.location='#projects'">View projects</button>
+        <p>I enjoy working alongside other students and early-stage collaborators, especially in spaces where learning together matters more than polish or speed. I value clear communication, shared credit, and being honest about what I don't yet know.</p>
+        <button onclick="document.location='#collaborate'">Collaborate with me</button>
+        <p>I keep a Binder of Thoughts on this site as a way to think in public : notes, reflections, and ideas in progress. It's not meant to be definitive, just a record of how my thinking evolves over time.</p>
+        <button onclick="document.location='#binder'">View Binder</button>
+        <p>Right now, I'm focused on learning, building, and working on projects that feel thoughtful and grounded. If something here resonates with you, feel free to reach out.</p>
+        <button onclick="document.location='#contact'">Contact</button>
+      </div>
+    </section>
 
-/* Project page helpers */
-.meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1rem;
-}
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2>Selected Work</h2>
+        <p class="muted">A few projects I've been building and learning through.</p>
+      </div>
+    
+      <div class="cards">
+        <a href="projects/project1.html" class="card-link">
+          <article class="card">
+            <div class="card-top">
+              <h3>Regina Crime Dashboard</h3>
+              <span class="tag">data viz</span>
+            </div>
+            <p class="muted">Interactive dashboard exploring public crime data by area and type.</p>
+          </article>
+        </a>
+    
+        <a href="projects/project2.html" class="card-link">
+          <article class="card">
+            <div class="card-top">
+              <h3>Apple Weight Prediction</h3>
+              <span class="tag">ml</span>
+            </div>
+            <p class="muted">Predictive modeling experiment focused on evaluation and iteration.</p>
+          </article>
+        </a>
+    
+        <a href="#" class="card-link">
+          <article class="card">
+            <div class="card-top">
+              <h3>The Lake Project</h3>
+              <span class="tag">spatial</span>
+            </div>
+            <p class="muted">Remote sensing + GIS workflow to analyze lake changes over time.</p>
+          </article>
+        </a>
+      </div>
+    </section>
 
-.pill {
-  display: inline-block;
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  border: 1px solid rgba(34, 34, 34, 0.25);
-  background: rgba(255, 255, 255, 0.25);
-  font-size: 0.9rem;
-}
+    <section id="collaborate" class="section page-collaborate">
+      <section class="section">
+        <h2>Who this is for</h2>
+        <p class="muted">This page is mainly for fellow students who are working on:</p>
+        <ul class="list">
+          <li>course projects</li>
+          <li>research ideas</li>
+          <li>hackathon or side projects</li>
+          <li>data-for-good or public-interest work</li>
+        </ul>
+      </section>
+      
+      <section class="section">
+        <h2>Ways we could collaborate</h2>
+        <div class="stack">
+          <div class="item">
+            <h3>Project brainstorming &amp; scoping</h3>
+            <p class="muted">Turning vague ideas into something buildable.</p>
+          </div>
+          <div class="item">
+            <h3>Data analysis &amp; visualization</h3>
+            <p class="muted">Making sense of datasets for projects, competitions, or personal exploration.</p>
+          </div>
+          <div class="item">
+            <h3>ML / AI experiments</h3>
+            <p class="muted">Trying models, evaluating results, and documenting what we learn.</p>
+          </div>
+        </div>
+      </section>
+      
+      <p>If this sounds like something you'd enjoy, feel free to reach out.</p>
+      <button onclick="document.location='#contact'">Get in touch</button>
+    </section>
 
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  color: #222;
-  border: 1px solid #222;
-  background: #c28395;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  font-weight: 600;
-}
+    <section id="binder" class="section">
+      <div class="section-head">
+        <h2>Binder of Thoughts</h2>
+        <p class="muted">Notes, questions, and half-finished ideas.</p>
+      </div>
+      <div class="binder-grid">
+        <a href="binder/my-first-thought.html" class="binder-link">
+          <article class="binder-card tag-data">
+            <span class="binder-tag">gis</span>
+            <h3>How GIS actually works</h3>
+            <p class="muted">A reflection on spatial data and layers.</p>
+          </article>
+        </a> 
+        <a href="binder/computer-vision.html" class="binder-link">
+          <article class="binder-card tag-ai">
+            <span class="binder-tag">ml</span>
+            <h3>Computer Vision 👁️👁️</h3>
+            <p class="muted">How computers see things.</p>
+          </article>
+        </a> 
+      </div>
+    </section>
 
-.btn-ghost {
-  background: rgba(255, 255, 255, 0.25);
-}
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Tell me what you're building.</p>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/mojajler" method="POST">
+        <label><span>Name</span><input type="text" name="name" required /></label>
+        <label><span>Email</span><input type="email" name="email" required /></label>
+        <label><span>Message</span><textarea name="message" rows="6" required></textarea></label>
+        <input type="text" name="_gotcha" style="display:none" />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
 
-.glance {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
+  <div id="junk-folder" class="folder-drawer">
+    <div class="folder-tab" onclick="toggleFolder()">
+      <span>Junk Journal</span>
+    </div>
+    <div class="folder-content">
+      <div class="folder-header">
+        <h2>The Scraps</h2>
+        <button onclick="toggleFolder()" class="close-folder">File Away</button>
+      </div>
+      
+      <div class="journal-scrap vintage-style">
+        <span class="scrap-date">2026-03-24</span>
+        <p>Thinking about the "Lake Project." Found some old 19th-century hydrography maps. The way they hand-draw depth is so much more "human" than a modern heatmap.</p>
+      </div>
 
-.glance-item {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(34, 34, 34, 0.15);
-  border-radius: 14px;
-  padding: 1rem;
-}
+      <div class="journal-scrap tech-style">
+        <span class="scrap-date">2026-03-25</span>
+        <p>AI Grader Bug: MiniLM is surprisingly sensitive to newline characters in the prompt. Fixed by stripping whitespace before vectorization.</p>
+        <code>input.replace(/\n/g, " ")</code>
+      </div>
 
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
+      <div class="journal-scrap vintage-style" style="background-color: #f0ebe4;">
+        <span class="scrap-date">Recent</span>
+        <p>Looking into Jaipur weather data (2022-2024). Want to see if heatwaves correlate with the accuracy of local ML agriculture models.</p>
+      </div>
+    </div>
+  </div>
 
-.media {
-  margin: 0;
-}
+  <footer>
+    <p><strong>Gurinayat Mangat</strong></p>
+    <p>Computer Science Student | Data • Systems • Place</p>
+    <p>
+      <a href="#home">Home</a> | 
+      <a href="#projects">Projects</a> | 
+      <a href="#collaborate">Collaborate</a> | 
+      <a href="#binder">Binder</a> | 
+      <a href="#contact">Contact</a>
+    </p>
+    <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+      © 2026 Gurinayat Mangat | 
+      <a href="https://github.com/gkm2004/personal-site">GitHub</a>
+    </p>
+  </footer>
 
-.media-box {
-  width: 100%;
-  height: 260px;              /* fixed box height */
-  border-radius: 14px;
-  border: 1px solid rgba(34, 34, 34, 0.15);
-  background: rgba(255, 255, 255, 0.35);
-  overflow: hidden;           /* hides overflow */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  <script>
+    function toggleFolder() {
+      const folder = document.getElementById('junk-folder');
+      folder.classList.toggle('open');
+    }
 
+    // Optional: Close the folder if clicking outside of it
+    document.addEventListener('click', function(event) {
+      const folder = document.getElementById('junk-folder');
+      const isClickInside = folder.contains(event.target);
+      
+      if (!isClickInside && folder.classList.contains('open')) {
+        folder.classList.remove('open');
+      }
+    });
+  </script>
 
-.media-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;        /* THIS is the magic */
-  border-radius: 0;           /* box handles rounding */
-}
-
-
+</body>
+</html>
