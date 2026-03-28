@@ -457,4 +457,165 @@ body {
   border-radius: 0;           /* box handles rounding */
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
+footer {
+  background: #f5efeb;
+  margin-top: 4rem;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Junk Journal Desktop Icon */
+.folder-icon-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.folder-icon-container:hover {
+  transform: scale(1.1);
+}
+
+.folder-icon-container img {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.folder-label {
+  font-size: 11px;
+  font-family: "Courier New", Courier, monospace;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2px 5px;
+  margin-top: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+/* The Pop-up Window Container */
+.journal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 400px;
+  background: #f0f0f0; /* Light grey body */
+  border: 3px solid #ffb7c5; /* Pink border */
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+}
+
+/* Pink Title Bar */
+.window-header {
+  background: #ffb7c5;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move; /* Indicates it can be dragged */
+}
+
+.window-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.window-controls button {
+  background: #eee;
+  border: 1px solid #999;
+  font-size: 10px;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+/* The Content Area */
+.window-body {
+  padding: 15px;
+  flex-grow: 1;
+  overflow-y: auto;
+  background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+  background-size: 15px 15px; /* Subtle graph paper effect */
+}
+
+/* --- EXISTING GRID LAYOUT --- */
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns are better now */
+  gap: 25px; /* Increase gap slightly */
+  text-align: center;
+  justify-content: center;
+}
+
+/* --- THE SUB-FOLDER CONTAINER --- */
+.sub-folder {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  width: 90px; /* NEW: Give the folder wrapper a specific width */
+  margin: 0 auto; /* NEW: Center it in its grid cell */
+}
+
+/* --- THE ACTUAL IMAGE (LOGO) --- */
+.sub-folder img {
+  width: 70px; /* INCREASE THIS (was likely 40-50px) */
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image in the wrapper */
+}
+
+.sub-folder p {
+  font-size: 13px; /* Slightly bigger font */
+  margin-top: 8px; /* More breathing room */
+}
+
+/* Style for images once a folder is opened */
+#art-content img {
+  border: 4px solid white;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  transform: rotate(-2deg); /* Slightly "scrapbook" messy look */
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+/* --- RESIZE HANDLE --- */
+.journal-window::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background-image: linear-gradient(135deg, transparent 3px, #ffb7c5 3px); /* Matching Pink Handle */
+  cursor: nwse-resize; /* "NorthWest SouthEast" Resize cursor */
+  border-radius: 0 0 6px 0; /* Match corner radius */
+}

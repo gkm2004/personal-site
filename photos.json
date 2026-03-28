@@ -1,0 +1,12 @@
+{
+    "Digital": [
+      { "url": "screenshot_01.png", "caption": "First successful build." },
+      { "url": "code_snippet.jpeg", "caption": "The logic behind the drag function." }
+    ],
+    "Crafts": [
+      { "url": "vintage_map.png", "caption": "Found in the Regina public archives." }
+    ],
+    "Random": [
+      { "url": "napkin_sketch.jpg", "caption": "Initial idea for the pop-up window." }
+    ]
+  }
