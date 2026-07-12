@@ -516,6 +516,156 @@
       margin: 0;
     }
 
+    /* ── JOURNAL ────────────────────────────────────────────── */
+    .journal-explorer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      max-width: 480px;
+    }
+
+    .explorer-bar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 14px;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    .journal-folders {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .folder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 32px 48px;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s;
+      user-select: none;
+    }
+
+    .folder:hover { background: rgba(184,169,248,0.07); }
+    .folder-icon { font-size: 36px; line-height: 1; }
+    .folder-name {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+    }
+
+    /* Modal overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-window {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      width: min(520px, 92vw);
+      box-shadow: 0 0 40px rgba(184,169,248,0.08), 0 0 0 1px var(--border);
+      animation: popIn 0.15s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    .modal-titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-dots { display: flex; gap: 6px; }
+
+    .modal-title {
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: 0.05em;
+    }
+
+    .modal-body { padding: 20px; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .photo-card {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .photo-slot {
+      aspect-ratio: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.85) brightness(0.95);
+      transition: filter 0.2s;
+    }
+
+    .photo-slot img:hover { filter: saturate(1) brightness(1); }
+
+    /* shown when image fails to load */
+    .photo-slot.empty {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--bg),
+        var(--bg) 4px,
+        var(--surface) 4px,
+        var(--surface) 8px
+      );
+    }
+
+    .photo-slot.empty::after {
+      content: '+';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-px);
+      font-size: 28px;
+      color: var(--border);
+    }
+
+    .photo-tags {
+      font-size: 10px;
+      color: var(--dim);
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+    }
+
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 600px) {
       .epoch-stats { flex-direction: row; min-width: unset; }
@@ -535,6 +685,7 @@
       <li><a href="#epoch">Epoch</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#binder">Binder</a></li>
+      <li><a href="#journal">Journal</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -820,22 +971,76 @@
         <span class="explorer-path">📁 JunkJournal</span>
       </div>
       <div class="journal-folders">
-        <a class="folder" href="projects/project1.html">
+        <div class="folder" onclick="openJournal()">
           <span class="folder-icon">🗂️</span>
           <span class="folder-name">Digital</span>
-        </a>
-        <a class="folder" href="#">
-          <span class="folder-icon">🗂️</span>
-          <span class="folder-name">Crafts</span>
-        </a>
-        <a class="folder" href="#">
-          <span class="folder-icon">🗂️</span>
-          <span class="folder-name">Random</span>
-        </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- JOURNAL MODAL -->
+<div class="modal-overlay" id="journalOverlay" onclick="closeJournal(event)">
+  <div class="modal-window">
+    <div class="modal-titlebar">
+      <div class="modal-dots">
+        <div class="chrome-dot red" onclick="closeJournal()" style="cursor:pointer"></div>
+        <div class="chrome-dot amber"></div>
+        <div class="chrome-dot green"></div>
+      </div>
+      <span class="modal-title">Digital — JunkJournal</span>
+      <span></span>
+    </div>
+    <div class="modal-body">
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <div class="photo-slot">
+            <img src="journal/coffee.jpg" alt="" onerror="this.parentElement.classList.add('empty')" />
+          </div>
+          <div class="photo-tags">#morningcoffee #ritual</div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-slot">
+            <img src="journal/msbuild.jpg" alt="" onerror="this.parentElement.classList.add('empty')" />
+          </div>
+          <div class="photo-tags">#microsoftbuild #2026</div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-slot">
+            <img src="journal/crafts1.jpg" alt="" onerror="this.parentElement.classList.add('empty')" />
+          </div>
+          <div class="photo-tags">#crafts #handmade</div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-slot">
+            <img src="journal/life1.jpg" alt="" onerror="this.parentElement.classList.add('empty')" />
+          </div>
+          <div class="photo-tags">#life #lately</div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-slot">
+            <img src="journal/life2.jpg" alt="" onerror="this.parentElement.classList.add('empty')" />
+          </div>
+          <div class="photo-tags">#randomhours</div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-slot">
+            <img src="journal/life3.jpg" alt="" onerror="this.parentElement.classList.add('empty')" />
+          </div>
+          <div class="photo-tags">#dump</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -850,6 +1055,24 @@
     <p class="footer-copy">© 2026 Gurinayat Mangat · Built with HTML, CSS, and too much caffeine.</p>
   </div>
 </footer>
+
+<script>
+  function openJournal() {
+    document.getElementById('journalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeJournal(e) {
+    if (!e || e.target === document.getElementById('journalOverlay')) {
+      document.getElementById('journalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeJournal();
+  });
+</script>
 
 </body>
 </html>
