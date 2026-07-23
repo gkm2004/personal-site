@@ -84,7 +84,7 @@
             <span class="tag">DevOps</span>
           </div>
           <h3 class="card-title">PRism</h3>
-          <img class="card-image" src="projects/images/prism-architecture.svg" alt="PRism architecture: PR triggers Orchestrator, which fans out to four parallel specialist agents (Diff Analyst, History Agent, Coverage Agent, Timing Agent), aggregated by a Verdict Agent into a Deployment Confidence Score that greenlights or blocks the merge.">
+          <img class="card-image" src="images/prism-architecture.svg" alt="PRism architecture: PR triggers Orchestrator, which fans out to four parallel specialist agents (Diff Analyst, History Agent, Coverage Agent, Timing Agent), aggregated by a Verdict Agent into a Deployment Confidence Score that greenlights or blocks the merge.">
           <p class="card-desc">
             Agentic pre-deployment risk gate that evaluates pull requests before release and assigns a Deployment Confidence Score from 0–100. Four specialist agents run in parallel — Diff Analyst, History Agent, Coverage Agent, Timing Agent — and a Verdict Agent aggregates weighted signals. Built a GitHub Actions workflow integration and VS Code extension. Won the Grand Prize at Microsoft AI Dev Days Hackathon 2026.
           </p>
@@ -136,8 +136,12 @@
             <span class="tag">Python</span>
           </div>
           <h3 class="card-title">The Lake Project</h3>
+          <div class="card-image-row">
+            <img class="card-image-half" src="images/lake-cluster-2022-2023.png" alt="Row-normalized cluster transition matrix showing how surface-type clusters at Sambhar Salt Lake shifted between 2022 and 2023.">
+            <img class="card-image-half" src="images/lake-cluster-2023-2024.png" alt="Row-normalized cluster transition matrix showing how surface-type clusters at Sambhar Salt Lake shifted between 2023 and 2024.">
+          </div>
           <p class="card-desc">
-            End-to-end Python remote sensing pipeline for temporal surface mapping of Sambhar Salt Lake using Sentinel-2 multi-spectral imagery. Handles cloud masking, spectral index calculation (NDVI, NDWI), and surface change analysis over time.
+            End-to-end Python remote sensing pipeline for temporal surface mapping of Sambhar Salt Lake using Sentinel-2 multi-spectral imagery. Handles cloud masking, spectral index calculation (NDVI, NDWI), and surface change analysis over time. Unsupervised clustering tracks how surface-type regions shift year over year, shown above as row-normalized transition matrices.
           </p>
           <div class="card-links">
             <a class="card-link" href="binder/my-first-thought.html">Notes</a>
@@ -159,6 +163,7 @@
             <span class="tag">Python</span>
           </div>
           <h3 class="card-title">Regina Crime Dashboard</h3>
+          <img class="card-image" src="images/crime-dashboard.png" alt="Regina Crime Dashboard showing a dark-themed map with crime incident density by neighborhood and a breakdown of total crime by area.">
           <p class="card-desc">
             Interactive dashboard exploring public crime data in Regina by area and type. Built to practice end-to-end data wrangling, visual encoding decisions, and public dataset storytelling.
           </p>
