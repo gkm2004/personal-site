@@ -1274,3 +1274,13 @@ footer {
   .stat { text-align: left; }
   .nav-links { display: none; }
 }
+
+.card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 14px;
+  background: var(--bg);
+}
